@@ -4,6 +4,7 @@ let counter = [];
 
 function renderCanaleDrepte (){
   let canaleDrepteHTML = '';
+  renderItemId();
   canaleDrepte.forEach((produs)=>{
     
     canaleDrepteHTML+=`
@@ -49,7 +50,7 @@ document.querySelector('.add-item').addEventListener('click', ()=>{
 
     
 
-
+    renderItemId();
     renderCanaleDrepte();
     stergeCantitate();
   
@@ -84,12 +85,21 @@ function stergeCantitate (){
   document.querySelectorAll('.js-quantity-delete').forEach((item)=>{
     item.addEventListener('click', ()=>{
       
-      canaleDrepte.splice(item.dataset.productid, 1);
+      canaleDrepte.splice(item.dataset.productid-1, 1);
       localStorage.removeItem('canaleDrepte');
+      renderItemId();
       localStorage.setItem('canaleDrepte', JSON.stringify(canaleDrepte));
       renderCanaleDrepte();
       stergeCantitate();
       
     })
     });
+}
+
+function renderItemId(){
+  let i=1;
+  canaleDrepte.forEach((item)=>{
+    item.id=i;
+    i++
+  })
 }
