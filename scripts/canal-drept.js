@@ -27,9 +27,9 @@ document.querySelector('.add-item').addEventListener('click', ()=>{
   
   Sistem: <input class="sistem css-sistem js-sistem">
   Cod: <p class="cod css-cod js-cod">RTD</p>
-  Dimensiune A <input class="dimensiunea css-dimensiunea js-dimensiunea">
-  Dimensiune B <input class="dimensiuneb css-dimensiuneb js-dimensiuneb">
-  Dimensiune L <input class="dimensiunel css-dimensiunel js-dimensiunel">
+  Dimensiune A <input class="dimensiunea css-dimensiunea js-dimensiunea" type="number" min="0">
+  Dimensiune B <input class="dimensiuneb css-dimensiuneb js-dimensiuneb" type="number" min="0">
+  Dimensiune L <input class="dimensiunel css-dimensiunel js-dimensiunel" type="number" min="0">
   Cantitate: <input class="cantitate css-cantitate js-cantitate">
   Observatii: <input class="observatii css-observatii js-observatii">
   <button class="add-to-list css-add-to-list js-add-to-list">Adauga</button>
