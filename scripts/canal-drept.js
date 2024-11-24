@@ -8,7 +8,7 @@ function renderCanaleDrepte (){
   canaleDrepte.forEach((produs)=>{
     
     canaleDrepteHTML+=`
-    <br> ID: ${produs.id} Sistem: ${produs.sistem} Cod: ${produs.cod} Eticheta: ${produs.sistem}-${produs.cod}- Eticheta dimensiuni: A=${produs.dimensiunea}, B=${produs.dimensiuneb}, L= ${produs.dimensiunel}, UM: Buc, Cant: ${produs.cantitate} Suprafata Unitara: ${Number(produs.dimensiunea*produs.dimensiuneb*produs.dimensiunel)}, Suprafata Totala(m2): ${Number(produs.dimensiunea*produs.dimensiuneb*produs.dimensiunel)*produs.cantitate}, Observatii: ${produs.observatii} <button class="quantity-update css-quantity-update js-quantity-update" data-productid="${Number(produs.id)}">Modifica Cantitate</button> <button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${Number(produs.id)}">Sterge Cantitate</button>
+    <br> ID: ${produs.id} Sistem: ${produs.sistem} Cod: ${produs.cod} Eticheta: ${produs.sistem}-${produs.cod}- Eticheta dimensiuni: A=${produs.dimensiunea}, B=${produs.dimensiuneb}, L= ${produs.dimensiunel}, UM: Buc, Cant: ${produs.cantitate} Suprafata Unitara: ${Number(produs.dimensiunea*produs.dimensiuneb*produs.dimensiunel/1000000).toFixed(2)}, Suprafata Totala(m2): ${Number((produs.dimensiunea*produs.dimensiuneb*produs.dimensiunel)*produs.cantitate/1000000).toFixed(2)}, Observatii: ${produs.observatii} <button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${Number(produs.id)}">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${Number(produs.id)}">-</button><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${Number(produs.id)}">Sterge produs</button>
     `
   })
   document.querySelector('.show-table').innerHTML=canaleDrepteHTML;
@@ -17,6 +17,8 @@ function renderCanaleDrepte (){
 
 renderCanaleDrepte();
 stergeCantitate();
+cresteCantitate();
+scadeCantitate();
 
 let produs = {};
 
@@ -53,6 +55,8 @@ document.querySelector('.add-item').addEventListener('click', ()=>{
     renderItemId();
     renderCanaleDrepte();
     stergeCantitate();
+    cresteCantitate();
+    scadeCantitate();
   
   });
 
@@ -102,4 +106,46 @@ function renderItemId(){
     item.id=i;
     i++
   })
+}
+
+function cresteCantitate (){
+  document.querySelectorAll('.js-quantity-increase').forEach((item)=>{
+    item.addEventListener('click', ()=>{
+      
+      canaleDrepte.forEach((entity)=>{
+        if (Number(item.dataset.productid) === Number(entity.id)){
+          entity.cantitate++;
+        }else (console.log('not working'));
+      })
+      localStorage.removeItem('canaleDrepte');
+      renderItemId();
+      localStorage.setItem('canaleDrepte', JSON.stringify(canaleDrepte));
+      renderCanaleDrepte();
+      stergeCantitate();
+      cresteCantitate();
+      scadeCantitate();
+    })
+    });
+}
+
+function scadeCantitate (){
+  document.querySelectorAll('.js-quantity-decrease').forEach((item)=>{
+    item.addEventListener('click', ()=>{
+      
+      canaleDrepte.forEach((entity)=>{
+        if (Number(item.dataset.productid) === Number(entity.id) && entity.cantitate>0 ){
+          entity.cantitate--;
+        }else (console.log('not working'));
+      })
+      localStorage.removeItem('canaleDrepte');
+      renderItemId();
+      localStorage.setItem('canaleDrepte', JSON.stringify(canaleDrepte));
+      renderCanaleDrepte();
+      stergeCantitate();
+      cresteCantitate();
+      scadeCantitate();
+      
+      
+    })
+    });
 }
