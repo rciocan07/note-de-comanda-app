@@ -1,0 +1,19 @@
+.show-table{
+    background-color: rgba(171, 233, 233, 0.666);
+    display: flexbox;
+    width: fit-content;
+    block-size: fit-content;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    justify-content: right;
+    align-items: stretch;
+    margin-top:20px;
+}
+.input-table{
+    display: flexbox;
+    background-color: azure;
+    width: fit-content;
+}
+.css-sistem{
+    width:20px;
+    background-color: yellowgreen;
+}
