@@ -59,7 +59,6 @@ document.querySelector('.add-item').addEventListener('click', ()=>{
     scadeCantitate();
   
   });
-
 });
 
 
@@ -148,4 +147,9 @@ function scadeCantitate (){
       
     })
     });
+}
+
+
+function adaugaCanalDrept(){
+ 
 }

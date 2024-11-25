@@ -20,3 +20,19 @@
 .css-body{
     background-color: azure;
 }
+.css-cod-produs{
+    display: flexbox;
+    margin-left: 20px;
+    align-content: flex-start;
+    justify-self: start;
+    max-width: 2px;
+}
+.css-image{
+    margin-right: 4px;
+    position: relative;
+    top: 6px;
+    float: left;
+}
+.css-first-container{
+    margin-bottom: 120px;
+}
