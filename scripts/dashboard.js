@@ -1,0 +1,1 @@
+document.querySelector('.produsbrutpage').addEventListener('click',()=>{window.open('../canal-drept.html', "_self")})

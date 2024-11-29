@@ -13,9 +13,8 @@
     background-color: azure;
     width: fit-content;
 }
-.css-sistem{
-    width:20px;
-    background-color: yellowgreen;
+.css-inputfield{
+    max-width: 100px;
 }
 .css-body{
     background-color: azure;
@@ -34,5 +33,17 @@
     float: left;
 }
 .css-first-container{
-    margin-bottom: 120px;
+    margin-bottom: 220px;
+}
+
+.css-flansa-libera{
+    max-width: 40px;
+}
+.css-cantitate{
+    max-width: 40px;
+}
+
+.css-image{
+    height: 200px;
+    width: 200px;
 }
