@@ -2,12 +2,39 @@
 <html>
   <head>
     <title>table</title>
+  
+  <style>
+   
+
+  </style>
+  </head>
     <body>
-      <div class="test"></div>
-      <script>
-        let table = document.createElement('table');
-        table.border = 1;
-        document.querySelector('.test').innerHTML=table
+      <div class="test">
+
+        <table>
+          <caption>
+            Front-end web developer course 2021
+          </caption>
+          <thead >
+            <tr>
+              <th scope="col">Person</th>
+              <th scope="col">Most interest in</th>
+              <th scope="col">Age</th>
+            </tr>
+          </thead>
+          <tbody class = "js-tablecontent">
+            <tr>
+              <th scope="row">Chris</th>
+              <td>HTML tables</td>
+              <td>22</td>
+            </tr>
+          </tbody></table>
+
+      </div>
+
+
+
+      <script type="module" src="./scripts/tableattempt.js">
       </script>
     </body>
   </head>

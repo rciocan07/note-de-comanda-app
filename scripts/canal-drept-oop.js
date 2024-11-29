@@ -6,8 +6,8 @@ const order = {
    produsul : {},
 
    addFunctionalityToPage(){
-    this.renderCanaleDrepte();
     this.renderItemId();
+    this.renderCanaleDrepte();
     this.renderCanaleDrepteInput();
     this.stergeCantitate();
     this.cresteCantitate();
@@ -22,7 +22,10 @@ const order = {
     this.canaleDrepteItems.forEach((produs)=>{
       if(produs.flansa>0){
         canaleDrepteHTML+=`
-      <div class="css-item"><br> ID: ${produs.id} Sistem: ${produs.sistem} Cod: ${produs.cod} Eticheta: ${produs.sistem}-${produs.cod}- Eticheta dimensiuni: A=${produs.dimensiunea}, B=${produs.dimensiuneb}, L= ${produs.dimensiunel}, UM: Buc, Cant: ${produs.cantitate} Suprafata Unitara: ${produs.suprafata}, Suprafata Totala(m2): ${produs.suprafataTotala}, Flansa Libera: ${produs.flansa}, Observatii: ${produs.observatii} <button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${Number(produs.id)}">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${Number(produs.id)}">-</button><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${Number(produs.id)}">Sterge produs</button></div> 
+        <table>
+        <tr>
+      <td><div class="css-item"><br> ID: ${produs.id} </td> <td> Sistem: ${produs.sistem} </td> Cod: ${produs.cod} Eticheta: ${produs.sistem}-${produs.cod}- Eticheta dimensiuni: A=${produs.dimensiunea}, B=${produs.dimensiuneb}, L= ${produs.dimensiunel}, UM: Buc, Cant: ${produs.cantitate} Suprafata Unitara: ${produs.suprafata}, Suprafata Totala(m2): ${produs.suprafataTotala}, Flansa Libera: ${produs.flansa}, Observatii: ${produs.observatii} <button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${Number(produs.id)}">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${Number(produs.id)}">-</button><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${Number(produs.id)}">Sterge produs</button></div> 
+      </tr></table>
       `
 
       }else{
@@ -33,6 +36,7 @@ const order = {
       
     })
     document.querySelector('.show-table').innerHTML=canaleDrepteHTML;
+
   },
 
   calculGrosime(){
@@ -55,7 +59,7 @@ const order = {
       document.querySelector('.input-table').innerHTML=`
       
       
-      Sistem: <input class="sistem css-sistem js-sistem css-inputfield">
+      <div class="css-sitem">Sistem: <input class="sistem css-sistem js-sistem css-inputfield"></div>
       <form id="inputform">
       Dimensiune A <input class="dimensiunea css-inputfield css-dimensiunea js-dimensiunea" type="number" min="0">
       Dimensiune B <input class="dimensiuneb css-inputfield css-dimensiuneb js-dimensiuneb" type="number" min="0">
@@ -200,6 +204,10 @@ const order = {
 };
 
 
+
 order.addFunctionalityToPage();
+export const test = order;
+
 
 document.querySelector('.js-homebutton').addEventListener('click',()=>{window.open('../dashboard.html', "_self")})
+
