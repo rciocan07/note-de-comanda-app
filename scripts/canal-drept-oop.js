@@ -22,10 +22,10 @@ const order = {
     this.canaleDrepteItems.forEach((produs)=>{
       if(produs.flansa>0){
         canaleDrepteHTML+=`
-        <table>
+        
         <tr>
-      <td><div class="css-item"><br> ID: ${produs.id} </td> <td> Sistem: ${produs.sistem} </td> Cod: ${produs.cod} Eticheta: ${produs.sistem}-${produs.cod}- Eticheta dimensiuni: A=${produs.dimensiunea}, B=${produs.dimensiuneb}, L= ${produs.dimensiunel}, UM: Buc, Cant: ${produs.cantitate} Suprafata Unitara: ${produs.suprafata}, Suprafata Totala(m2): ${produs.suprafataTotala}, Flansa Libera: ${produs.flansa}, Observatii: ${produs.observatii} <button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${Number(produs.id)}">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${Number(produs.id)}">-</button><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${Number(produs.id)}">Sterge produs</button></div> 
-      </tr></table>
+      <td>${produs.id}</td> <td>${produs.sistem}</td><td>${produs.cod}</td><td>${produs.sistem}-${produs.cod}-${produs.id}</td><td>A=${produs.dimensiunea}, B=${produs.dimensiuneb}, L= ${produs.dimensiunel}</td><td>Buc</td><td>${produs.cantitate}</td><td>${produs.suprafata}</td><td>${produs.suprafataTotala}</td><td>${produs.flansa}</td><td>${produs.observatii}</td><td><button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${Number(produs.id)}">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${Number(produs.id)}">-</button></td><td><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${Number(produs.id)}">Sterge produs</button></td>
+      </tr>
       `
 
       }else{
