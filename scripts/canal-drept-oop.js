@@ -1,7 +1,7 @@
 const order = {
    canaleDrepteItems : JSON.parse(localStorage.getItem('canaleDrepte-oop')) || [],
+   accesoriiMontaj : JSON.parse(localStorage.getItem('accesoriiMontaj')) || [],
 
-   counter : [],
 
    produsul : {},
 
@@ -81,6 +81,12 @@ const order = {
         suprafataTotala: this.calculSuprafata()*document.querySelector('.js-cantitate').value,
         conectare:"F30",
         grosime: this.calculGrosime(),
+        piulitaSurubM10: document.querySelector('.js-cantitate').value*4,
+        clipsuri: this.calculClipsuri(),
+        silicon: this.calculSilicon(),
+        piulitaExpandabilaM10: this.calculPiulitaExpandabila(),
+        tijaFiletata: this.calculTijaFiletata(),
+        profil4141: this.calculProfil4141(),
         }
 
         this.canaleDrepteItems.push(this.produsul);
@@ -111,6 +117,37 @@ const order = {
         this.resetForm();
         document.querySelector('.js-dimensiunea').focus();
       });
+    },
+
+    calculClipsuri(){
+      let clipsuri = 0;
+     clipsuri= (((Number(document.querySelector('.js-dimensiunea').value) + Number(document.querySelector('.js-dimensiuneb').value))*2)*document.querySelector('.js-cantitate').value)/200
+     return clipsuri;
+    },
+
+    calculSilicon(){
+      let silicon = 0;
+     silicon = (((Number(document.querySelector('.js-dimensiunea').value) + Number(document.querySelector('.js-dimensiuneb').value))*2*document.querySelector('.js-cantitate').value)/1000/14).toFixed(2)
+     return silicon;
+
+    },
+
+    calculPiulitaExpandabila(){
+      let piulitaExpandabila = 0;
+      piulitaExpandabila = (document.querySelector('.js-dimensiunel').value*document.querySelector('.js-cantitate').value*2/1500).toFixed(1);
+      return piulitaExpandabila;
+    },
+
+    calculTijaFiletata(){
+      let tijaFiletata = 0;
+      tijaFiletata = (document.querySelector('.js-dimensiuneb').value/1000+0.5)*this.calculPiulitaExpandabila()
+      return tijaFiletata
+    },
+
+    calculProfil4141(){
+      let profil4141 = 0;
+      profil4141 = ((document.querySelector('.js-dimensiunea').value/1000+0.1)*(this.calculPiulitaExpandabila()/2)).toFixed(2)
+      return profil4141
     },
 
     addMinusQuantityButton(){
