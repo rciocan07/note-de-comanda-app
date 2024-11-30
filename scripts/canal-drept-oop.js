@@ -20,19 +20,13 @@ const order = {
     let canaleDrepteHTML = '';
     this.renderItemId();
     this.canaleDrepteItems.forEach((produs)=>{
-      if(produs.flansa>0){
+
         canaleDrepteHTML+=`
         
         <tr>
       <td>${produs.id}</td> <td>${produs.sistem}</td><td>${produs.cod}</td><td>${produs.sistem}-${produs.cod}-${produs.id}</td><td>A=${produs.dimensiunea}, B=${produs.dimensiuneb}, L= ${produs.dimensiunel}</td><td>Buc</td><td>${produs.cantitate}</td><td>${produs.suprafata}</td><td>${produs.suprafataTotala}</td><td>${produs.flansa}</td><td>${produs.observatii}</td><td><button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${Number(produs.id)}">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${Number(produs.id)}">-</button></td><td><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${Number(produs.id)}">Sterge produs</button></td>
       </tr>
       `
-
-      }else{
-        canaleDrepteHTML+=`
-      <div class="css-item"><br> ID: ${produs.id} Sistem: ${produs.sistem} Cod: ${produs.cod} Eticheta: ${produs.sistem}-${produs.cod}-${produs.id} Eticheta dimensiuni: A=${produs.dimensiunea}, B=${produs.dimensiuneb}, L= ${produs.dimensiunel}, UM: Buc, Cant: ${produs.cantitate} Suprafata Unitara: ${produs.suprafata}, Suprafata Totala(m2): ${produs.suprafataTotala}, Observatii: ${produs.observatii} <button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${Number(produs.id)}">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${Number(produs.id)}">-</button><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${Number(produs.id)}">Sterge produs</button></div> 
-      `
-      }
       
     })
     document.querySelector('.show-table').innerHTML=canaleDrepteHTML;
@@ -115,6 +109,7 @@ const order = {
         this.cresteCantitate();
         this.scadeCantitate();
         this.resetForm();
+        document.querySelector('.js-dimensiunea').focus();
       });
     },
 
