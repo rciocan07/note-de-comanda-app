@@ -55,38 +55,34 @@ const order = {
       
       <div class="css-sitem">Sistem: <input class="sistem css-sistem js-sistem css-inputfield"></div>
       <form id="inputform">
-      Dimensiune A <input class="dimensiunea css-inputfield css-dimensiunea js-dimensiunea" type="number" min="0">
-      Dimensiune B <input class="dimensiuneb css-inputfield css-dimensiuneb js-dimensiuneb" type="number" min="0">
-      Dimensiune L <input class="dimensiunel css-inputfield css-dimensiunel js-dimensiunel" type="number" min="0">
+      Dimensiune A <input required class="dimensiunea css-inputfield css-dimensiunea js-dimensiunea" type="number" min="0">
+      Dimensiune B <input required class="dimensiuneb css-inputfield css-dimensiuneb js-dimensiuneb" type="number" min="0">
+      Dimensiune L <input required class="dimensiunel css-inputfield css-dimensiunel js-dimensiunel" type="number" min="0">
       Cantitate: <input class="cantitate css-inputfield css-cantitate js-cantitate " type="number" onfocus="this.value" min="1" value="1">
       Flansa libera: <input class="flansaLibera css-inputfield css-flansa-libera js-flansa-libera" type="number" min="0" value="0">
-      Observatii: <input class="observatii css-inputfield css-observatii js-observatii">
-      <button type="button" class="add-to-list css-add-to-list js-add-to-list">Adauga</button>
-      </form>
+      Observatii: <input class="observatii css-inputfield css-observatii js-observatii"></form>
+      <button type="submit" class="add-to-list css-add-to-list js-add-to-list">Adauga</button>
+      
       `
       
       document.querySelector('.js-add-to-list').addEventListener('click', ()=>{
+
+        if(document.querySelector('.js-dimensiunea').value != "" && document.querySelector('.js-dimensiuneb').value != 0 && document.querySelector('.js-dimensiunel').value != 0){
+
+        
         
         this.produsul = {
           id : this.canaleDrepteItems.length,
         sistem : document.querySelector('.js-sistem').value,
         cod: "RTD",
-        dimensiunea : document.querySelector('.js-dimensiunea').value,
-        dimensiuneb : document.querySelector('.js-dimensiuneb').value,
-        dimensiunel : document.querySelector('.js-dimensiunel').value,
-        cantitate : document.querySelector('.js-cantitate').value,
-        flansa: document.querySelector('.js-flansa-libera').value,
+        dimensiunea : Number(document.querySelector('.js-dimensiunea').value),
+        dimensiuneb : Number(document.querySelector('.js-dimensiuneb').value),
+        dimensiunel : Number(document.querySelector('.js-dimensiunel').value),
+        cantitate : Number(document.querySelector('.js-cantitate').value),
+        flansa: Number(document.querySelector('.js-flansa-libera').value),
         observatii : document.querySelector('.js-observatii').value,
         suprafata: this.calculSuprafata(),
         suprafataTotala: this.calculSuprafata()*document.querySelector('.js-cantitate').value,
-        conectare:"F30",
-        grosime: this.calculGrosime(),
-        piulitaSurubM10: document.querySelector('.js-cantitate').value*4,
-        clipsuri: this.calculClipsuri(),
-        silicon: this.calculSilicon(),
-        piulitaExpandabilaM10: this.calculPiulitaExpandabila(),
-        tijaFiletata: this.calculTijaFiletata(),
-        profil4141: this.calculProfil4141(),
         }
 
         this.canaleDrepteItems.push(this.produsul);
@@ -115,39 +111,9 @@ const order = {
         this.cresteCantitate();
         this.scadeCantitate();
         this.resetForm();
-        document.querySelector('.js-dimensiunea').focus();
+        document.querySelector('.js-dimensiunea').focus();}
+        else {alert('Te rugam sa completezi toate dimensiunile canalului')}
       });
-    },
-
-    calculClipsuri(){
-      let clipsuri = 0;
-     clipsuri= (((Number(document.querySelector('.js-dimensiunea').value) + Number(document.querySelector('.js-dimensiuneb').value))*2)*document.querySelector('.js-cantitate').value)/200
-     return clipsuri;
-    },
-
-    calculSilicon(){
-      let silicon = 0;
-     silicon = (((Number(document.querySelector('.js-dimensiunea').value) + Number(document.querySelector('.js-dimensiuneb').value))*2*document.querySelector('.js-cantitate').value)/1000/14).toFixed(2)
-     return silicon;
-
-    },
-
-    calculPiulitaExpandabila(){
-      let piulitaExpandabila = 0;
-      piulitaExpandabila = (document.querySelector('.js-dimensiunel').value*document.querySelector('.js-cantitate').value*2/1500).toFixed(1);
-      return piulitaExpandabila;
-    },
-
-    calculTijaFiletata(){
-      let tijaFiletata = 0;
-      tijaFiletata = (document.querySelector('.js-dimensiuneb').value/1000+0.5)*this.calculPiulitaExpandabila()
-      return tijaFiletata
-    },
-
-    calculProfil4141(){
-      let profil4141 = 0;
-      profil4141 = ((document.querySelector('.js-dimensiunea').value/1000+0.1)*(this.calculPiulitaExpandabila()/2)).toFixed(2)
-      return profil4141
     },
 
     addMinusQuantityButton(){
@@ -202,7 +168,6 @@ const order = {
               this.cresteCantitate();
               this.scadeCantitate();
               this.calculGrosime();
-              
             })
             });
         } ,   
