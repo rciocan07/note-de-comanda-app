@@ -18,6 +18,7 @@ const order = {
 
    renderCanaleDrepte(){
     let canaleDrepteHTML = '';
+    let canaleDreptToPrint = '';
     this.renderItemId();
     this.canaleDrepteItems.forEach((produs)=>{
 
@@ -27,10 +28,12 @@ const order = {
       <td>${produs.id}</td> <td>${produs.sistem}</td><td>${produs.cod}</td><td>${produs.sistem}-${produs.cod}-${produs.id}</td><td>A=${produs.dimensiunea}, B=${produs.dimensiuneb}, L= ${produs.dimensiunel}</td><td>Buc</td><td>${produs.cantitate}</td><td>${produs.suprafata}</td><td>${produs.suprafataTotala}</td><td>${produs.flansa}</td><td>${produs.observatii}</td><td><button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${Number(produs.id)}">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${Number(produs.id)}">-</button></td><td><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${Number(produs.id)}">Sterge produs</button></td>
       </tr>
       `
-      
-    })
+      canaleDreptToPrint+=`<tr><td>${produs.id}</td> <td>${produs.sistem}</td><td>${produs.cod}</td><td>${produs.sistem}-${produs.cod}-${produs.id}</td><td>A=${produs.dimensiunea}, B=${produs.dimensiuneb}, L= ${produs.dimensiunel}</td><td>Buc</td><td>${produs.cantitate}</td><td>${produs.suprafata}</td><td>${produs.suprafataTotala}</td><td>${produs.flansa}</td><td>${produs.observatii}</td></tr>`
+    }
+  )
     document.querySelector('.show-table').innerHTML=canaleDrepteHTML;
-
+    localStorage.setItem('canaleDrepteToPrint', JSON.stringify(canaleDreptToPrint));
+    
   },
 
   calculGrosime(){
@@ -203,8 +206,9 @@ const order = {
 
 
 order.addFunctionalityToPage();
-export const test = order;
 
+document.querySelector('.js-homebutton').addEventListener('click',()=>{window.open('../dashboard.html', "_self")});
 
-document.querySelector('.js-homebutton').addEventListener('click',()=>{window.open('../dashboard.html', "_self")})
-
+document.querySelector('.print').addEventListener('click', ()=>{
+  window.open('./toprint.html')
+})
