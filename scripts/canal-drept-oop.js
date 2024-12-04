@@ -207,7 +207,7 @@ const order = {
 
 order.addFunctionalityToPage();
 
-document.querySelector('.js-homebutton').addEventListener('click',()=>{window.open('../dashboard.html', "_self")});
+document.querySelector('.js-homebutton').addEventListener('click',()=>{window.open('./index.html', "_self")});
 
 document.querySelector('.print').addEventListener('click', ()=>{
   window.open('./toprint.html')
