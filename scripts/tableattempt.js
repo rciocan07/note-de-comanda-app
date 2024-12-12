@@ -1,6 +1,8 @@
 
 import { dimParticulare, produseBrute } from "../data/produse.js"
+import { Comanda } from "../data/comandacurenta.js"
 
+const comanda = new Comanda('test2')
 
 dimParticulare.forEach((produs)=>{
   document.querySelector('.butoane-piese').innerHTML+=`
@@ -15,26 +17,29 @@ document.querySelectorAll('.js-button').forEach((button)=>{
       if(produs.cod === button.dataset.cod){
         document.querySelector('.dimensions').innerHTML= '';
         for (let dimensiune in produs.dimensiuni){
-          
-          document.querySelector('.dimensions').innerHTML+= `${produs.dimensiuni[dimensiune]}<input type="number" min="0" placeholder="${produs.dimensiuni[dimensiune]}"></input>`;
+          document.querySelector('.cod').innerHTML= produs.cod
+          document.querySelector('.dimensions').innerHTML+= `${produs.dimensiuni[dimensiune]}<input class="et-dim ${dimensiune}"type="number" min="0" placeholder="${produs.dimensiuni[dimensiune]}"></input>`;
         }
 
       }
   })
 })})
 
-/*
-dimParticulare.forEach((produs)=>{
-  let inputHtml='';
-  document.querySelector(`.${produs.cod}`).addEventListener('click',()=>{
-    for (let property in produs.dimensiuni ){
-      inputHtml +=`${produs.dimensiuni[property]} <button class="${property}" >Test</button>`
-      console.log(inputHtml)
-      document.querySelector(`${dimParticulare.cod}`).addEventListener('click',()=>{
-      document.querySelector(".dimensions").innerHTML=inputHtml;
-      console.log(inputHtml)
-      })
-    }
+
+document.querySelector('.add-button').addEventListener('click',()=>{
+  dimParticulare.forEach((tip)=>{
+    
+    if(tip.cod === document.querySelector('.cod').innerHTML){
+      
+      const deAdaugat = {
+        sistem: document.querySelector('.sistem').value,
+        suprafata: tip.suprafata(document.querySelector('.dimensiunea'), document.querySelector('.dimensiuneb'), document.querySelector('.dimensiunec'))
+      }
+
+      comanda.adaugaLaComanda(deAdaugat);
+
+    }else{console.log(`not working`)}
   })
+ 
+  console.log(comanda.comanda)
 })
-  */

@@ -5,9 +5,12 @@ export let dimParticulare =[
     nume:"Canal Drept",
     cod:"RTD",
     dimensiuni:{
-      dimensiune_A:"Dimensiunea A",
-      dimensiune_B:"Dimensiunea B",
-      dimensiune_C:"Dimensiunea C"
+      dimensiuneA:"Dimensiunea A",
+      dimensiuneB:"Dimensiunea B",
+      dimensiuneC:"Dimensiunea C"
+    },
+    suprafata:(A,B,C)=>{
+      return ((2*A*C+2*B*C)/1000000).toFixed(2) < 0.1 ? 0.1 : ((2*A*C+2*B*C)/1000000).toFixed(2)
     }
   },
   {
@@ -19,6 +22,19 @@ export let dimParticulare =[
       dimensiunea3: "B",
       dimensiunea4: "Raza",
       dimensiunea5: "Unghi"
+    }
+  },
+  {
+    nume:"Reductie",
+    cod:"RR",
+    dimensiuni:{
+      dimensiuneA:"A:",
+      dimensiuneB:"B:",
+      dimensiuneC:"C:",
+      dimensiuneD:"D:",
+      dimensiunee:"e:",
+      dimensiunef:"f:",
+      dimensiunel:"L:"
     }
   }
 ]
