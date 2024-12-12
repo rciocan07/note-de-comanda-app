@@ -5,9 +5,9 @@ export let dimParticulare =[
     nume:"Canal Drept",
     cod:"RTD",
     dimensiuni:{
-      dimensiuneaA:"Dimensiunea A",
-      dimensiuneaB:"Dimensiunea B",
-      dimensiuneaC:"Dimensiunea C"
+      dimensiune_A:"Dimensiunea A",
+      dimensiune_B:"Dimensiunea B",
+      dimensiune_C:"Dimensiunea C"
     }
   },
   {
