@@ -52,7 +52,7 @@ const order = {
   },
 
   renderCanaleDrepteInput(){
-     document.querySelector('.add-item').addEventListener('click', ()=>{
+     
       document.querySelector('.input-table').innerHTML=`
       
       
@@ -67,7 +67,7 @@ const order = {
       <button type="submit" class="add-to-list css-add-to-list js-add-to-list">Adauga</button>
       
       `
-     })
+     
       document.querySelector('.js-add-to-list').addEventListener('click', ()=>{
 
         if(document.querySelector('.js-dimensiunea').value != "" && document.querySelector('.js-dimensiuneb').value != 0 && document.querySelector('.js-dimensiunel').value != 0){
