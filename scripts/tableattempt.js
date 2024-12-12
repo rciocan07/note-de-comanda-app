@@ -1,30 +1,23 @@
-let order = JSON.parse(localStorage.getItem('canaleDrepte-oop'));
+
+import { dimParticulare, produseBrute } from "../data/produse.js"
 
 
-console.log(order)
-function renderItemId(){
-  let i=1;
-  order.forEach((item)=>{
-    item.id=i;
-    i++
-  })
-  localStorage.setItem('canaleDrepte-oop', JSON.stringify(order));
-}
-function renderTableContent(){
-  let tableContentHTML= "";
-  renderItemId();
-  order.forEach((item)=>{
-    tableContentHTML+=`
-    <tr>
-                  <th scope="row">ID:${item.id}</th>
-                  <td>Cod:${item.cod}</td>
-                  <td>Cantitate:${item.cantitate}</td>
-                </tr>
-    `
+dimParticulare.forEach((produs)=>{
+  document.querySelector('.butoane-piese').innerHTML+=`
+  <button class=${produs.cod}>${produs.nume}</button>
+  `
+})
+
+function test(){
+  let inputHtml='';
+  for(let property in dimParticulare.dimensiuni){
+    inputHtml +=`${dimParticulare.dimensiuni[property]} <button class="${property}" >Test</button>`
+
+    console.log(inputHtml)
+  }}
+
+  test()
+
+  document.querySelector(`.${dimParticulare.cod}`).addEventListener('click',()=>{
+    document.querySelector('.dimensions').innerHTML=inputHtml;
     })
-return tableContentHTML;
-}
-
-
-let tableContent = renderTableContent();
-document.querySelector('.js-tablecontent').innerHTML= tableContent
