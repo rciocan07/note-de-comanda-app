@@ -18,6 +18,10 @@ function test(){
 
   test()
 
+document.addEventListener("DOMContentLoaded", ()=>{
   document.querySelector(`.${dimParticulare.cod}`).addEventListener('click',()=>{
     document.querySelector('.dimensions').innerHTML=inputHtml;
     })
+
+})
+  
