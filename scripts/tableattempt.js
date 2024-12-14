@@ -44,7 +44,7 @@ function calculSuprafata(){
     dimToParse.push(Number(dimensiune.value))
     }
   )
-    console.log(typeof(dimToParse))
+    console.log(dimToParse)
   dimParticulare.forEach((tip)=>{
     if (tip.cod === document.querySelector('.cod').innerHTML){
       suprafata = tip.suprafata(dimToParse)
@@ -70,5 +70,10 @@ document.querySelector('.add-button').addEventListener('click',()=>{
     }else{console.log(`not working`)}
   })
  
+  console.log(comanda.comanda)
+})
+
+document.querySelector('.delete-button').addEventListener('click', ()=>{
+  comanda.stergeComanda()
   console.log(comanda.comanda)
 })
