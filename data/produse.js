@@ -9,8 +9,11 @@ export let dimParticulare =[
       dimensiuneB:"Dimensiunea B",
       dimensiuneC:"Dimensiunea C"
     },
-    suprafata:(A,B,C)=>{
-      return ((2*A*C+2*B*C)/1000000).toFixed(2) < 0.1 ? 0.1 : ((2*A*C+2*B*C)/1000000).toFixed(2)
+    suprafata:(param)=>{
+      console.log(param)
+      let result = param[0]*param[1]*param[2]
+      console.log(result)
+      return result
     }
   },
   {
@@ -22,7 +25,9 @@ export let dimParticulare =[
       dimensiunea3: "B",
       dimensiunea4: "Raza",
       dimensiunea5: "Unghi"
-    }
+    },
+    suprafata: (A,B,C)=>{
+      return ((2*A*C+2*B*C)/1000000).toFixed(2) < 0.1 ? 0.1 : ((2*A*C+2*B*C)/1000000).toFixed(2)}
   },
   {
     nume:"Reductie",

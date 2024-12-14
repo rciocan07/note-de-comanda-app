@@ -13,5 +13,8 @@ export class Comanda {
         localStorage.setItem(this.localStorageKey, JSON.stringify(this.comanda))
     }
 
+    salveazaLocal(){
+        
+    }
 
 }

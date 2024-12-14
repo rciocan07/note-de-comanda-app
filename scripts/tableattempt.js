@@ -25,6 +25,33 @@ document.querySelectorAll('.js-button').forEach((button)=>{
   })
 })})
 
+function creareDim(){
+  let dimList={}
+  let i=1;
+  document.querySelectorAll('.et-dim').forEach((dimensiune)=>{
+    const dimensiuneName= `dimensiune${i}`;
+    const dimToPush = dimensiune.value;
+    i++;
+    dimList[dimensiuneName]=dimToPush
+  })
+  return dimList
+}
+
+function calculSuprafata(){
+  let dimToParse=[]
+  let suprafata;
+  document.querySelectorAll('.et-dim').forEach((dimensiune)=>{
+    dimToParse.push(Number(dimensiune.value))
+    }
+  )
+    console.log(typeof(dimToParse))
+  dimParticulare.forEach((tip)=>{
+    if (tip.cod === document.querySelector('.cod').innerHTML){
+      suprafata = tip.suprafata(dimToParse)
+    }
+  })
+  return suprafata
+}
 
 document.querySelector('.add-button').addEventListener('click',()=>{
   dimParticulare.forEach((tip)=>{
@@ -33,7 +60,9 @@ document.querySelector('.add-button').addEventListener('click',()=>{
       
       const deAdaugat = {
         sistem: document.querySelector('.sistem').value,
-        suprafata: tip.suprafata(document.querySelector('.dimensiunea'), document.querySelector('.dimensiuneb'), document.querySelector('.dimensiunec'))
+        cod: tip.cod,
+        dimensiuni: creareDim(),
+        suprafata: calculSuprafata()
       }
 
       comanda.adaugaLaComanda(deAdaugat);
