@@ -2,24 +2,7 @@
 <html>
   <head>
     <title>table</title>
-  
-  <style>
-   .butoane-piese{
-    width:500px;
-    background-color: aqua;
-    margin: 10px;
-   }
-   button{
-    margin: 6px;
-    border-radius: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-   }
-   button:hover{
-    background-color: aquamarine;
-   }
-
-  </style>
+  <link rel="stylesheet" href="/css/genprod.css">
   </head>
     <body>
       
@@ -29,7 +12,7 @@
       <div class="js-genbutton"></div>
       <div class="input-field">
         Sistem: <input type="text" class="sistem input-field">
-        Cod: <p class="cod"></p>
+        Cod: <p class="cod css-cod"></p>
         <div class="dimensions"></div>
         Cantitate <input class="cantitate" type="number" value="1">
         Flansa libera: <input type="number" value="0">
@@ -38,7 +21,7 @@
       <div><button class="add-button">Adauga</button></div>
       <script src="./data/comandacurenta.js" type="module"></script>
       <script src="./data/produse.js" type="module"></script>
-      <script src="./scripts/tableattempt.js" type="module"></script>
+      <script src="./scripts/genprod.js" type="module"></script>
       
     </body>
   </head>

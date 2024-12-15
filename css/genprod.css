@@ -1,0 +1,33 @@
+.butoane-piese{
+  width:fit-content;
+  background-color: rgba(0, 179, 255, 0.585);
+  margin: 10px;
+  border-radius: 16px;
+  max-width: 600px;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 0.5s;
+ }
+ button{
+  margin: 6px;
+  border:none;
+  background-color: rgba(0, 179, 255, 0.585);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border-radius: 10px;
+  transition-duration: 0.5s;
+ }
+ button:hover{
+  background-color: rgba(0, 98, 255, 0.585);
+  border-radius: 10px;
+ }
+ button:active{
+  background-color:rgb(0, 98, 255)
+ }
+
+ body{
+  background-color:rgba(17, 45, 171, 0.63) ;
+ }
+ .css-et-dim{
+  height:50px;
+  justify-content: left;
+ }
