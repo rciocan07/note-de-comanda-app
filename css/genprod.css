@@ -28,6 +28,8 @@
   background-color:rgba(17, 45, 171, 0.63) ;
   height: fit-content;
   width: 700px;
+  max-width: 100%;
+  display: flex;
  }
  .css-et-dim{
   height:50px;
