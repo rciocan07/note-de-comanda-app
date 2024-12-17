@@ -2,7 +2,7 @@
 import { dimParticulare, produseBrute } from "../data/produse.js"
 import { Comanda } from "../data/comandacurenta.js"
 
-const comanda = new Comanda('test2')
+export const comanda = new Comanda('test2')
 
 dimParticulare.forEach((produs)=>{
   document.querySelector('.butoane-piese').innerHTML+=`
