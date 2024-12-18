@@ -1,7 +1,7 @@
 import { comanda } from "./genprod.js";
 
 document.querySelector('.table').innerHTML=`
-<table>
+<div class="area"><table>
   <th>
       <tr>
        <th scope="col">ID</th>
@@ -27,4 +27,4 @@ document.querySelector('.table').innerHTML=`
       <td>1</td> <td>Sistem</td><td>Cod</td><td>eticheta</td><td>Dimensiune</td><td>Buc</td><td>Cantitate</td><td>$Suprafata</td><td>Suprafata Totala</td><td>Flansa</td><td>Observatii</td><td><button class="quantity-increase css-quantity-increase js-quantity-increase">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease">-</button></td><td><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid=>Sterge produs</button></td>
       </tr>
   </tbody>
-</table>`
+</table></div>`
