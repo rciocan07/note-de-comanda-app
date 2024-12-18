@@ -1,10 +1,14 @@
 //export let comanda = JSON.parse(localStorage.getItem('comanda')) || []
-
+let comandaInstance = null;
 export class Comanda {
      localStorageKey;
      comanda = []
-   constructor(localStorageKeyName){
-    localStorage.setItem(localStorageKeyName, '')
+   constructor(localStorageKeyName, name){
+        if (comandaInstance){
+            return comandaInstance // return the existing instance
+        }
+    this.name = name
+    comandaInstance = this;
     this.localStorageKey=localStorageKeyName
     this.comanda = localStorage.getItem(this.localStorageKey) ?  JSON.parse(localStorage.getItem(this.localStorageKey)) : [];
    }
@@ -22,3 +26,14 @@ export class Comanda {
     }
 
 }
+
+/*
+export class Comanda {
+    constructor(name) {
+      if (comandaInstance) {
+        return comandaInstance; // Return the existing instance
+      }
+      this.name = name;
+      comandaInstance = this; // Save the instance for future access
+    }
+  }*/
