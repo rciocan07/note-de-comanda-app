@@ -12,7 +12,6 @@ document.querySelector('.table').innerHTML=`
           <th scope="col">UM</th>
           <th scope="col">Cantitate</th>
           <th scope="col">Suprafata</th>
-          <th scope="col">Suprafata totala</th>
           <th scope="col">Flansa Libera</th>
           <th scope="col">Observatii</th>
           <th scope="col">Modifica cantitate</th>
@@ -32,7 +31,11 @@ export function renderTable(){
   
 tableInput.forEach(element => {
   tableHTML+=` <tr>
-      <td>${counter}</td> <td>${element.sistem}</td><td>${element.cod}</td><td>eticheta</td><td>Dimensiune</td><td>Buc</td><td>${element.cantitate}</td><td>${element.suprafata}</td><td>${element.suprafata}</td><td>${element.flansa}</td><td>${element.observatii}</td><td><button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${element.id}">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${element.id}">-</button></td><td><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${element.id}">Sterge produs</button></td>
+      <td>${counter}</td> <td>${element.sistem}</td><td>${element.cod}</td><td>eticheta</td><td>Dimensiune</td><td>Buc</td>
+      <td><button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${element.id}">+</button>${element.cantitate}<button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${element.id}">-</button></td>
+      <td>${element.suprafata}</td>
+      <td><button class="js-flansa-increase" data-productid="${element.id}">+</button>${element.flansa}<button class="js-flansa-decrease" data-productid="${element.id}">-</button></td>
+      <td>${element.observatii}</td><td> </td><td><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${element.id}">Sterge produs</button></td>
       </tr>`
       counter++
 
@@ -65,6 +68,21 @@ document.querySelectorAll(".js-quantity-decrease").forEach((button) =>{
   })
 })
 
+document.querySelectorAll(".js-flansa-increase").forEach((button) =>{
+  button.addEventListener('click', ()=>{
+    comanda.cresteflansa(Number(button.dataset.productid))
+    renderTable()
+    console.log('flansa+1')
+  })
+})
+
+document.querySelectorAll(".js-flansa-decrease").forEach((button) =>{
+  button.addEventListener('click', ()=>{
+    comanda.scadeFlansa(Number(button.dataset.productid))
+    renderTable()
+    console.log('flansa-1')
+  })
+})
 
 }
 

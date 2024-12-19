@@ -44,6 +44,29 @@ export let dimParticulare =[
       dimensiunee:"e:",
       dimensiunef:"f:",
       dimensiunel:"L:"
-    }
-  }
+    },
+    suprafata:(param)=>{
+      console.log(param)
+      let result = param[0]+param[1]+param[2]+param[3]+param[4]
+      return result
+    } 
+  },
+  {
+    nume:"Ramificatie laterala",
+    cod:"RLAT",
+    dimensiuni:{
+      dimensiuneA:"A:",
+      dimensiuneB:"B:",
+      dimensiuneC:"C:",
+      dimensiuneD:"D:",
+      dimensiunee:"e:",
+      dimensiunef:"f:",
+      dimensiunel:"L:"
+    },
+    suprafata:(param)=>{
+      console.log(param)
+      let result = param[0]+param[1]+param[2]+param[3]+param[4]
+      return result
+    } 
+  },
 ]

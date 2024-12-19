@@ -51,7 +51,7 @@ function calculSuprafata(){
       suprafata = tip.suprafata(dimToParse)
     }
   })
-  return suprafata
+  return suprafata>0.1? suprafata:0.1
 }
 document.querySelector('.add-button').addEventListener('click',()=>{
  
@@ -65,7 +65,9 @@ document.querySelector('.add-button').addEventListener('click',()=>{
         cod: tip.cod,
         dimensiuni: creareDim(),
         suprafata: calculSuprafata(),
-        cantitate: document.querySelector('.cantitate').value
+        cantitate: document.querySelector('.cantitate').value,
+        flansa: document.querySelector('.flansa').value,
+        observatii: document.querySelector('.observatii').innerText
       }
       comanda.adaugaLaComanda(deAdaugat);
 

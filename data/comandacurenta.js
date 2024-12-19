@@ -34,6 +34,24 @@ export class Comanda {
         })
     }
 
+    cresteflansa(param){
+        this.comanda.forEach(element=>{
+            if(element.id === param){
+                element.flansa++
+                localStorage.setItem(this.localStorageKey, JSON.stringify(this.comanda))
+            }
+        })
+    }
+
+    scadeFlansa(param){
+        this.comanda.forEach(element=>{
+            if(element.id === param && element.flansa>=1){
+                element.flansa--
+                localStorage.setItem(this.localStorageKey, JSON.stringify(this.comanda))
+            }
+        })
+    }
+
     scadeCantitate(param){
         this.comanda.forEach(element=>{
             if(element.id === param && element.cantitate>1){
