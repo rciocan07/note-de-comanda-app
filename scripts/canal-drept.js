@@ -1,7 +1,7 @@
 let canaleDrepte = JSON.parse(localStorage.getItem('canaleDrepte')) || [];
 console.log(canaleDrepte);
 let counter = [];
-
+//teste
 function renderCanaleDrepte (){
   let canaleDrepteHTML = '';
   renderItemId();
