@@ -14,7 +14,6 @@ document.querySelector('.table').innerHTML=`
           <th scope="col">Suprafata</th>
           <th scope="col">Flansa Libera</th>
           <th scope="col">Observatii</th>
-          <th scope="col">Modifica cantitate</th>
           <th scope="col">Stergere</th>
       </tr>
   </th>
@@ -35,7 +34,7 @@ tableInput.forEach(element => {
       <td><button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${element.id}">+</button>${element.cantitate}<button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${element.id}">-</button></td>
       <td>${element.suprafata}</td>
       <td><button class="js-flansa-increase" data-productid="${element.id}">+</button>${element.flansa}<button class="js-flansa-decrease" data-productid="${element.id}">-</button></td>
-      <td>${element.observatii}</td><td> </td><td><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${element.id}">Sterge produs</button></td>
+      <td>${element.observatii}</td><td><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${element.id}">Sterge produs</button></td>
       </tr>`
       counter++
 

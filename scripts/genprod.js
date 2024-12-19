@@ -19,7 +19,7 @@ document.querySelectorAll('.js-button').forEach((button)=>{
         document.querySelector('.dimensions').innerHTML= '';
         for (let dimensiune in produs.dimensiuni){
           document.querySelector('.cod').innerHTML= produs.cod
-          document.querySelector('.dimensions').innerHTML+= `${produs.dimensiuni[dimensiune]}<input class="css-et-dim et-dim ${dimensiune}"type="number" min="0" placeholder="${produs.dimensiuni[dimensiune]}"></input>`;
+          document.querySelector('.dimensions').innerHTML+= `<input class="css-et-dim input-field et-dim ${dimensiune}"type="number" min="0" placeholder="${produs.dimensiuni[dimensiune]}"></input>`;
         }
 
       }

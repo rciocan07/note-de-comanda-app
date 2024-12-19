@@ -27,14 +27,29 @@
  body{
   background-color:rgba(17, 45, 171, 0.63) ;
  }
- .css-et-dim{
-  height:50px;
-  justify-content: left;
- }
+ 
  .area{
   margin:10px;
-  text-align: center;
   display:block;
-  float: left;
+  float: center;
   text-size-adjust: auto;
+  width:100%
+}
+.input-field{
+  border: none;
+  background-color: rgb(189, 201, 255);
+  margin: 0.5%;
+  width: 20%;
+  height: 50px;
+  border-radius: 10px;
+  align-content: center;
+}
+.input-fields{
+  display: block;
+  justify-content: left;
+  size: 5%;
+}
+.display{
+  display: block;
+  justify-content: left;
 }
