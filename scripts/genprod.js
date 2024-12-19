@@ -2,6 +2,7 @@
 import { dimParticulare, produseBrute } from "../data/produse.js"
 import { Comanda } from "../data/comandacurenta.js"
 
+
 export const comanda = new Comanda('test2')
 
 dimParticulare.forEach((produs)=>{
@@ -52,24 +53,24 @@ function calculSuprafata(){
   })
   return suprafata
 }
-
 document.querySelector('.add-button').addEventListener('click',()=>{
+ 
   dimParticulare.forEach((tip)=>{
     
     if(tip.cod === document.querySelector('.cod').innerHTML){
       
       const deAdaugat = {
+        id: Math.random(),
         sistem: document.querySelector('.sistem').value,
         cod: tip.cod,
         dimensiuni: creareDim(),
-        suprafata: calculSuprafata()
+        suprafata: calculSuprafata(),
+        cantitate: document.querySelector('.cantitate').value
       }
-
       comanda.adaugaLaComanda(deAdaugat);
 
     }else{console.log(`not working`)}
   })
- 
   console.log(comanda.comanda)
 })
 

@@ -23,14 +23,49 @@ document.querySelector('.table').innerHTML=`
   </tbody>
 </table></div>`
 
-let tableInput = JSON.parse(localStorage.getItem('test2'))
-let tableHTML;
 
+export function renderTable(){
+  let tableInput = JSON.parse(localStorage.getItem('test2')) // to fix later!
+  let tableHTML='';
+  let counter=1
+  if(tableInput){
+  
 tableInput.forEach(element => {
   tableHTML+=` <tr>
-      <td>1</td> <td>${element.sistem}</td><td>${element.cod}</td><td>eticheta</td><td>Dimensiune</td><td>Buc</td><td>${element.cantitate}</td><td>${element.suprafata}</td><td>${element.suprafata}</td><td>${element.flansa}</td><td>${element.observatii}</td><td><button class="quantity-increase css-quantity-increase js-quantity-increase">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease">-</button></td><td><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid=>Sterge produs</button></td>
+      <td>${counter}</td> <td>${element.sistem}</td><td>${element.cod}</td><td>eticheta</td><td>Dimensiune</td><td>Buc</td><td>${element.cantitate}</td><td>${element.suprafata}</td><td>${element.suprafata}</td><td>${element.flansa}</td><td>${element.observatii}</td><td><button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${element.id}">+</button> <button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${element.id}">-</button></td><td><button class="quantity-delete css-quantity-delete js-quantity-delete" data-productid="${element.id}">Sterge produs</button></td>
       </tr>`
+      counter++
 
 });
+    }else {tableHTML=''}
 
 document.querySelector('.tdata').innerHTML=tableHTML
+
+document.querySelectorAll(".js-quantity-delete").forEach((button) =>{
+  button.addEventListener('click', ()=>{
+    comanda.stergeProdus(Number(button.dataset.productid))
+    renderTable()
+    console.log('sters')
+  })
+})
+
+document.querySelectorAll(".js-quantity-increase").forEach((button) =>{
+  button.addEventListener('click', ()=>{
+    comanda.cresteCantitate(Number(button.dataset.productid))
+    renderTable()
+    console.log('adaugat 1')
+  })
+})
+
+document.querySelectorAll(".js-quantity-decrease").forEach((button) =>{
+  button.addEventListener('click', ()=>{
+    comanda.scadeCantitate(Number(button.dataset.productid))
+    renderTable()
+    console.log('scazut 1')
+  })
+})
+
+
+}
+
+renderTable()
