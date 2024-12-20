@@ -14,12 +14,14 @@ dimParticulare.forEach((produs)=>{
 
 document.querySelectorAll('.js-button').forEach((button)=>{
   button.addEventListener('click',()=>{
+    let i=1;
     dimParticulare.forEach((produs)=>{
       if(produs.cod === button.dataset.cod){
         document.querySelector('.dimensions').innerHTML= '';
         for (let dimensiune in produs.dimensiuni){
           document.querySelector('.cod').innerHTML= produs.cod
-          document.querySelector('.dimensions').innerHTML+= `<input class="css-et-dim input-field et-dim ${dimensiune}"type="number" min="0" placeholder="${produs.dimensiuni[dimensiune]}"></input>`;
+          document.querySelector('.dimensions').innerHTML+= `<input class="css-et-dim add focus${i} input-field et-dim ${dimensiune}" data-eticheta="${produs.dimensiuni[dimensiune]}"type="number" min="0" placeholder="${produs.dimensiuni[dimensiune]}"></input>`;
+          i++
         }
 
       }
@@ -34,6 +36,14 @@ function creareDim(){
     const dimToPush = dimensiune.value;
     i++;
     dimList[dimensiuneName]=dimToPush
+  })
+  return dimList
+}
+
+function creareEtDim(){
+  let dimList=''
+  document.querySelectorAll('.et-dim').forEach((dimensiune)=>{
+    dimList+=`${dimensiune.dataset.eticheta}=${dimensiune.value} `
   })
   return dimList
 }
@@ -67,13 +77,15 @@ document.querySelector('.add-button').addEventListener('click',()=>{
         suprafata: calculSuprafata(),
         cantitate: document.querySelector('.cantitate').value,
         flansa: document.querySelector('.flansa').value,
-        observatii: document.querySelector('.observatii').innerText
+        observatii: document.querySelector('.observatii').innerText,
+        etichetaDim: creareEtDim()
       }
       comanda.adaugaLaComanda(deAdaugat);
-
+      document.querySelector('.focus1').focus()
+      
     }else{console.log(`not working`)}
   })
-  console.log(comanda.comanda)
+  document.querySelector('.form').reset()
 })
 
 document.querySelector('.delete-button').addEventListener('click', ()=>{

@@ -1,8 +1,8 @@
 import { comanda } from "./genprod.js";
 
 document.querySelector('.table').innerHTML=`
-<div class="area"><table>
-  <th>
+<table>
+  <thead>
       <tr>
        <th scope="col">ID</th>
           <th scope="col">Sistem</th>
@@ -16,10 +16,10 @@ document.querySelector('.table').innerHTML=`
           <th scope="col">Observatii</th>
           <th scope="col">Stergere</th>
       </tr>
-  </th>
+  </thead>
   <tbody class="tdata">
   </tbody>
-</table></div>`
+</table>`
 
 
 export function renderTable(){
@@ -30,7 +30,7 @@ export function renderTable(){
   
 tableInput.forEach(element => {
   tableHTML+=` <tr>
-      <td>${counter}</td> <td>${element.sistem}</td><td>${element.cod}</td><td>eticheta</td><td>Dimensiune</td><td>Buc</td>
+      <td>${counter}</td> <td>${element.sistem}</td><td>${element.cod}</td><td>${element.sistem}-${element.cod}-${counter}</td><td>${element.etichetaDim}</td><td>Buc</td>
       <td><button class="quantity-increase css-quantity-increase js-quantity-increase" data-productid="${element.id}">+</button>${element.cantitate}<button class="js-quantity-decrease quantity-decrease css-quantity-decrease" data-productid="${element.id}">-</button></td>
       <td>${element.suprafata}</td>
       <td><button class="js-flansa-increase" data-productid="${element.id}">+</button>${element.flansa}<button class="js-flansa-decrease" data-productid="${element.id}">-</button></td>

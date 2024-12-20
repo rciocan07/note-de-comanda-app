@@ -5,9 +5,9 @@ export let dimParticulare =[
     nume:"Canal Drept",
     cod:"RTD",
     dimensiuni:{
-      dimensiuneA:"Dimensiunea A",
-      dimensiuneB:"Dimensiunea B",
-      dimensiuneC:"Dimensiunea C"
+      dimensiuneA:"A",
+      dimensiuneB:"B",
+      dimensiuneC:"C"
     },
     suprafata:(param)=>{
       console.log(param)
