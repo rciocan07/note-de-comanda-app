@@ -36,6 +36,7 @@
   width:100%
 }
 .input-field{
+  font-size:larger;
   border: none;
   background-color: rgb(189, 201, 255);
   margin: 0.5%;
@@ -52,4 +53,28 @@
 .display{
   display: block;
   justify-content: left;
+}
+.table-scrollable {
+  width: 100%;
+  max-height: 400px; /* Set the maximum height for the table body */
+  overflow-y: auto;  /* Enables vertical scrolling */
+  display: block;
+}
+
+.table-scrollable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-scrollable th, .table-scrollable td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd; /* Light border for the table */
+}
+
+.table-scrollable thead {
+  background-color: rgba(109, 135, 248, 0.633); /* Header background */
+  position: sticky;
+  top: 0; /* Keeps the header at the top */
+  z-index: 1; /* Keeps the header on top of the body content */
 }
