@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>table</title>
+  <link rel="stylesheet" href="./css/genprodmobile.css">
+  
+  </head>
+    <body>
+      <div class="area">
+      <div class="butoane-piese">
+      </div>
+      <button class="delete-button">Sterge Comanda Curenta</button>
+      <div class="js-genbutton"></div>
+      <div class="input-fields css-inputfields">
+        
+        <div class="display">Cod: <h3 class="cod input-field"></h3></div>
+        <input type="text" class="sistem input-field" placeholder="Sistem">
+       <form class="form"><div class="dimensions"></div>
+        Can.<input class="cantitate add input-field" type="number" value="1" min="1">
+        Fl. lib. <input class="flansa add input-field" type="number" value="0" min="0">
+        <input class="observatii input-field" type="text" placeholder="Observatii">
+      </div></form>
+      <div><button class="add-button">Adauga</button></div> </div>
+      <div class="table table-scrollable"></div>
+      <script src="./scripts/table.js" type="module"></script>
+      <script src="./data/comandacurenta.js" type="module"></script>
+      <script src="./data/produse.js" type="module"></script>
+      <script src="./scripts/genprod.js" type="module"></script>
+      
+    </body>
+  </head>
+</html>
