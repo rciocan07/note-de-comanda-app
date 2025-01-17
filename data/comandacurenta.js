@@ -75,6 +75,10 @@ export class Comanda {
         renderTable()
     }
 
+    toPrint(){
+        return this.localStorageKey
+    }
+
 }
 
 /*

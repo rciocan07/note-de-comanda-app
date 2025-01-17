@@ -2,7 +2,7 @@
 import { dimParticulare, produseBrute } from "../data/produse.js"
 import { Comanda } from "../data/comandacurenta.js"
 
-
+export let content;
 export const comanda = new Comanda('test2')
 
 dimParticulare.forEach((produs)=>{
