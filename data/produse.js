@@ -46,9 +46,38 @@ export let dimParticulare =[
       dimensiunel:"L:"
     },
     suprafata:(param)=>{
+      
       console.log(param)
-      let result = param[0]+param[1]+param[2]+param[3]+param[4]
-      return result
+      
+// Intermediate calculations
+const G = param[0], F = param[1], H = param[2], I = param[3], J = param[4], K = param[5], L = param[6];
+
+// Calculate terms
+const term1 = ((G + I) * Math.sqrt(L ** 2 + J ** 2)) / 2;
+const term2 = ((G + I) * Math.sqrt(L ** 2 + (F - H - J) ** 2)) / 2;
+const term3 = ((F + H) * Math.sqrt(L ** 2 + K ** 2)) / 2;
+const term4 = ((F + H) * Math.sqrt(L ** 2 + (G - I - K) ** 2)) / 2;
+
+// Sum of terms
+let result = (term1 + term2 + term3 + term4) / (10 ** 6);
+
+// Apply multiplier if L <= 250
+if (L <= 250) {
+  result *= 1.1;
+}
+
+// Log intermediate results for debugging
+console.log("Term 1:", term1);
+console.log("Term 2:", term2);
+console.log("Term 3:", term3);
+console.log("Term 4:", term4);
+console.log("Final Result:", result);
+
+
+      /*if(param[6]<250){
+        result = ((param[1]+param[3])*Math.sqrt(param[6]*param[6]+param[4]*param[4])/2+(param[1]+param[3])*Math.sqrt(param[6]*param[6]+(param[0]-param[2]-param[4])*(param[0]-param[2]-param[4]))/2+(param[0]+param[2])*Math.sqrt(param[6]*param[6]+param[5]*param[5])/2+(param[0]+param[2])+Math.sqrt(param[6]*param[6]+(param[1]-param[3]-param[5])*(param[1]-param[3]-param[5])))/1000000*1.1
+      }*/
+     return result
     } 
   },
   {
