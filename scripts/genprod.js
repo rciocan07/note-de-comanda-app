@@ -13,6 +13,7 @@ dimParticulare.forEach((produs)=>{
 })
 
 document.querySelectorAll('.js-button').forEach((button)=>{
+  
   button.addEventListener('click',()=>{
     let i=1;
     dimParticulare.forEach((produs)=>{
@@ -23,7 +24,7 @@ document.querySelectorAll('.js-button').forEach((button)=>{
           document.querySelector('.dimensions').innerHTML+= `<input class="css-et-dim add focus${i} input-field et-dim ${dimensiune}" data-eticheta="${produs.dimensiuni[dimensiune]}"type="number" min="0" placeholder="${produs.dimensiuni[dimensiune]}"></input>`;
           i++
         }
-
+        i=1
       }
   })
 })})
@@ -63,16 +64,25 @@ function calculSuprafata(){
   })
   return suprafata>0.1? suprafata:0.1
 }
+
 document.querySelector('.add-button').addEventListener('click',()=>{
  
   dimParticulare.forEach((tip)=>{
     
     if(tip.cod === document.querySelector('.cod').innerHTML){
-      
+      let codRC = tip.cod
+      if (tip.cod === "DRC"){
+        let dimToParseloc=[]
+        document.querySelectorAll('.et-dim').forEach(dimensiune=>{
+          dimToParseloc.push(Number(dimensiune.value))
+          })
+        codRC = rcCorect(dimToParseloc)
+        
+      }
       const deAdaugat = {
         id: Math.random(),
         sistem: document.querySelector('.sistem').value,
-        cod: tip.cod,
+        cod: codRC,
         dimensiuni: creareDim(),
         suprafata: calculSuprafata(),
         cantitate: document.querySelector('.cantitate').value,
@@ -83,7 +93,7 @@ document.querySelector('.add-button').addEventListener('click',()=>{
       comanda.adaugaLaComanda(deAdaugat);
       document.querySelector('.focus1').focus()
       
-    }else{console.log(`not working`)}
+    }
   })
   document.querySelector('.form').reset()
 })
@@ -92,3 +102,18 @@ document.querySelector('.delete-button').addEventListener('click', ()=>{
   comanda.stergeComanda()
   console.log(comanda.comanda)
 })
+
+function rcCorect(param){
+  let cod = "RCR"
+  if ((param[0]>401 || param[1]>401) && (param[0]<801 || param[1]<801)){
+    cod ="CRDir1"
+  }else if ((param[0]>800 || param[1]>800) && (param[0]<1601|| param[1]<1601)){
+    cod ="CRDir2"
+  }else if ((param[0]>1600 || param[1]>1600) && (param[0]<2001|| param[1]<2001)){
+    cod="CRDir2"
+  }else if (param[0]===param[1]){
+    cod="RCd"
+  }
+  console.log("Trec pe aici")
+  return cod
+}

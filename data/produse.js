@@ -1,4 +1,4 @@
-export let produseBrute = [["Canal Drept", "Reductie", "Ramificatie laterala", "Ramificatie bilaterala", "Cot rectangular", "Teu", "Ramificatie pantalon", "Schimbare de sectiune excentrica", "Cot drept", "piesa de deviatie (Etaj)", "Yaka", "Schimbare de sectiune concentrica", "Cot cu dirijori", "Capac", "Plenum"],["Canal Drept","Reductie","Ramificatie laterala","Ramificatie bilaterala","Tub spiro","Teu Circular","Sa circulara","Cot rectangular","Teu","Ramificatie Pantalon","Schimbare de sctiune concentrica","Cot circular","Niplu","Stut cu plasa de sarma","Cot drept","Piesa de deviatie(Etaj)","YAKA","Plenum grile","Reductie Circulara","Capac Circular","Clapeta de reglaj circulara","Cot cu dirijori","Capac","Plenum","Plenum VCV","Schimbare de sectiune excentrica","Stut","Priza de aer la 45 AVL"]]
+export let produseBrute = [["Canal Drept", "Reductie", "Ramificatie laterala", "Ramificatie bilaterala", "Cot rectangular", "Teu", "Ramificatie pantalon", "Schimbare de sectiune excentrica", "Cot drept", "piesa de deviatie (Etaj)", "Yaka", "Schimbare de sectiune concentrica", "Cot cu dirijori", "Capac", "Plenum"],["Canal Drept","Reductie","Ramificatie laterala","Ramificatie bilaterala","Tub spiro","Teu Circular","Sa circulara","Cot rectangular","Teu","Ramificatie Pantalon","Schimbare de sctiune concentrica","Cot circular","Niplu","Stut cu plasa de sarma","Cot drept","Piesa de deviatie(Etaj)","YAKA","Plenum grile","Reductie Circulara","Capac Circular","Clapeta de reglaj circulara","Capac","Plenum","Plenum VCV","Schimbare de sectiune excentrica","Stut","Priza de aer la 45 AVL"]]
 
 export let dimParticulare =[
   {
@@ -46,39 +46,25 @@ export let dimParticulare =[
       dimensiunel:"L:"
     },
     suprafata:(param)=>{
+      const F6 = param[0];
+      const G6 = param[1];
+      const H6 = param[2];
+      const I6 = param[3];
+      const J6 = param[4];
+      const K6 = param[5];
+      const L6 = param[6];
+
+      const term1 = (G6 + I6)*(Math.sqrt(Math.pow(L6, 2)+Math.pow(J6, 2)))/2
+      const term2 = (G6 + I6)*(Math.sqrt(Math.pow(L6,2)+Math.pow(F6-H6-J6, 2)))/2
+      const term3 = (F6+H6)*(Math.sqrt(Math.pow(L6, 2)+Math.pow(K6, 2)))/2
+      const term4 = (F6+H6)*Math.sqrt(Math.pow(L6,2)+Math.pow(G6-I6-K6, 2))
       
-      console.log(param)
-      
-// Intermediate calculations
-const G = param[0], F = param[1], H = param[2], I = param[3], J = param[4], K = param[5], L = param[6];
-
-// Calculate terms
-const term1 = ((G + I) * Math.sqrt(L ** 2 + J ** 2)) / 2;
-const term2 = ((G + I) * Math.sqrt(L ** 2 + (F - H - J) ** 2)) / 2;
-const term3 = ((F + H) * Math.sqrt(L ** 2 + K ** 2)) / 2;
-const term4 = ((F + H) * Math.sqrt(L ** 2 + (G - I - K) ** 2)) / 2;
-
-// Sum of terms
-let result = (term1 + term2 + term3 + term4) / (10 ** 6);
-
-// Apply multiplier if L <= 250
-if (L <= 250) {
-  result *= 1.1;
-}
-
-// Log intermediate results for debugging
-console.log("Term 1:", term1);
-console.log("Term 2:", term2);
-console.log("Term 3:", term3);
-console.log("Term 4:", term4);
-console.log("Final Result:", result);
-
-
-      /*if(param[6]<250){
-        result = ((param[1]+param[3])*Math.sqrt(param[6]*param[6]+param[4]*param[4])/2+(param[1]+param[3])*Math.sqrt(param[6]*param[6]+(param[0]-param[2]-param[4])*(param[0]-param[2]-param[4]))/2+(param[0]+param[2])*Math.sqrt(param[6]*param[6]+param[5]*param[5])/2+(param[0]+param[2])+Math.sqrt(param[6]*param[6]+(param[1]-param[3]-param[5])*(param[1]-param[3]-param[5])))/1000000*1.1
-      }*/
-     return result
-    } 
+      const sum = term1+term2+term3+term4
+      const normalizedResult = sum / Math.pow(10,6);
+      if(L6 <= 250){
+        return (normalizedResult*1.1).toFixed(2)
+      }else return normalizedResult.toFixed(2)
+    }
   },
   {
     nume:"Ramificatie laterala",
@@ -109,14 +95,19 @@ console.log("Final Result:", result);
       dimensiunee:"<:",
     },
     suprafata:(param)=>{
-      console.log(param)
-      let result = param[0]+param[1]+param[2]+param[3]+param[4]
-      return result
+      const F = param[0]
+      const G = param[1]
+      const H = param[2]
+      const I = param[3]
+      const J = param[4]
+
+     const result = ((F/1000+I/1000)*(G/1000+I/1000)*2+(F/1000+G/1000+4*I/1000)*H/1000)*J/90
+      return result.toFixed(2)
     } 
   },
   {
     nume:"Cot Rectangular cu dirijori",
-    cod:"RC",
+    cod:"RCd",
     dimensiuni:{
       dimensiuneA:"A1:",
       dimensiuneB:"A2:",
@@ -139,21 +130,6 @@ console.log("Final Result:", result);
       dimensiuneC:"C:",
       dimensiuneD:"R:",
       dimensiunee:"L:",
-    },
-    suprafata:(param)=>{
-      console.log(param)
-      let result = param[0]+param[1]+param[2]+param[3]+param[4]
-      return result
-    } 
-  },
-  {
-    nume:"Piesa de deviatie (Etaj)",
-    cod:"RSD",
-    dimensiuni:{
-      dimensiuneA:"A:",
-      dimensiuneB:"B:",
-      dimensiuneC:"F:",
-      dimensiuneD:"L:",
     },
     suprafata:(param)=>{
       console.log(param)
