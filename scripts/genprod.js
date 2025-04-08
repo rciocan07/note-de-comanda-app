@@ -1,5 +1,5 @@
 
-import { dimParticulare, produseBrute } from "../data/produse.js"
+import { dimParticulare, rcCorect } from "../data/produse.js"
 import { Comanda } from "../data/comandacurenta.js"
 
 export let content;
@@ -103,17 +103,3 @@ document.querySelector('.delete-button').addEventListener('click', ()=>{
   console.log(comanda.comanda)
 })
 
-function rcCorect(param){
-  let cod = "RCR"
-  if ((param[0]>401 || param[1]>401) && (param[0]<801 || param[1]<801)){
-    cod ="CRDir1"
-  }else if ((param[0]>800 || param[1]>800) && (param[0]<1601|| param[1]<1601)){
-    cod ="CRDir2"
-  }else if ((param[0]>1600 || param[1]>1600) && (param[0]<2001|| param[1]<2001)){
-    cod="CRDir2"
-  }else if (param[0]===param[1]){
-    cod="RCd"
-  }
-  console.log("Trec pe aici")
-  return cod
-}

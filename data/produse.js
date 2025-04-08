@@ -1,4 +1,18 @@
 export let produseBrute = [["Canal Drept", "Reductie", "Ramificatie laterala", "Ramificatie bilaterala", "Cot rectangular", "Teu", "Ramificatie pantalon", "Schimbare de sectiune excentrica", "Cot drept", "piesa de deviatie (Etaj)", "Yaka", "Schimbare de sectiune concentrica", "Cot cu dirijori", "Capac", "Plenum"],["Canal Drept","Reductie","Ramificatie laterala","Ramificatie bilaterala","Tub spiro","Teu Circular","Sa circulara","Cot rectangular","Teu","Ramificatie Pantalon","Schimbare de sctiune concentrica","Cot circular","Niplu","Stut cu plasa de sarma","Cot drept","Piesa de deviatie(Etaj)","YAKA","Plenum grile","Reductie Circulara","Capac Circular","Clapeta de reglaj circulara","Capac","Plenum","Plenum VCV","Schimbare de sectiune excentrica","Stut","Priza de aer la 45 AVL"]]
+export function rcCorect(param){
+  let cod = "RCR"
+  if ((param[0]>401 || param[1]>401) && (param[0]<801 || param[1]<801)){
+    cod ="CRDir1"
+  }else if ((param[0]>800 || param[1]>800) && (param[0]<1601|| param[1]<1601)){
+    cod ="CRDir2"
+  }else if ((param[0]>1600 || param[1]>1600) && (param[0]<2001|| param[1]<2001)){
+    cod="CRDir2"
+  }else if (param[0]===param[1]){
+    cod="RCd"
+  }
+  console.log("Trec pe aici")
+  return cod
+}
 
 export let dimParticulare =[
   {
@@ -116,9 +130,10 @@ export let dimParticulare =[
       dimensiunee:"<():",
     },
     suprafata:(param)=>{
-      console.log(param)
-      let result = param[0]+param[1]+param[2]+param[3]+param[4]
-      return result
+      let result = ''
+      if (rcCorect(param) === "CRDir1"){
+        result = (param[0]/1000+param[3]/1000)*(param[1]/1000+param[4]/1000)*2+Math.PI*param[2]*(2*param[3]/1000+param[0]/1000)/2+Math.PI*(param[0]/1000/3+param[3]/1000)*param[2]/1000/2*param[4]/90
+      }
     } 
   },
   {
